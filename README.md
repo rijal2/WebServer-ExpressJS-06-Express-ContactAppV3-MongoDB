@@ -14,6 +14,8 @@ Kali ini akan mengubah database dari JSON ke MongoDB
 SKENARIONYA adalah mengopy file maupun folder yang dibutuhkan dari sesi latihan sebelumnya.
 
 01. Copy metode app.get() yang merespon halaman home.
-02. Copy folder beserta isinya, yang berkaitan dengan halaman home. Yaitu folder view dan public. Copy semuanya.
+02. Copy folder beserta isinya, yang berkaitan dengan halaman home. Yaitu folder view dan public. Copy semuanya. Sampai disini tampilan dibrowser masih error, tinggal melakuka setup tampilan ejs.
+03. Setup tampilan ejs.
+
 
 

@@ -4,6 +4,16 @@ const expressLayouts = require('express-ejs-layouts');
 const app = express()
 const port = 3000;
 
+// SET UP EJS
+
+//Menggunakan ejs
+app.set('view engine', 'ejs');
+app.use(expressLayouts);
+//Menggunakan middleware express.static
+app.use(express.static('public'))
+//Menggunakan middleware express.urlencoded()
+app.use(express.urlencoded( {extended: true} ))
+
 // Halaman Home
 app.get('/', (req, res) => {
     const mhs = [
