@@ -9,6 +9,10 @@ Kali ini akan mengubah database dari JSON ke MongoDB
 05. Install ejs dengan perintah "npm i ejs@3.1.6"
 06. Install express ejs layouts dengan perintah "npm i express-ejs-layouts@2.5.0"
 07. Require ketiga module yang sudah diinstall tersebut pada file entri point nya, app.js
-08. Jangan lupa instal juga nodemon agar aplikasi dapat aktif secara otomatis ketika terjadi perubahan
+08. Jangan lupa instal juga nodemon agar aplikasi dapat aktif secara otomatis ketika terjadi perubahan.
+
+SKENARIONYA adalah mengopy file maupun folder yang dibutuhkan dari sesi latihan sebelumnya.
+
+01. Copy metode app.get() yang merespon halaman home
 
 
