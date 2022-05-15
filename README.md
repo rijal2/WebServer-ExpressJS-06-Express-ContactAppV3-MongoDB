@@ -23,7 +23,9 @@ const contacts = loadContact()
 Ket: Function tersebut adalah yang bertugas untuk menampilkan data-data yang disimpan didalam file JSON. Karena pada sesi ini akan menggunakna mongoDB sebagai penimpanan datanya maka function ini sudah tidak dibutuhkan lagi.
 
 MENGHUBUNGKAN APLIKASI DENGAN MONGODB MENGGUNAKAN MONGOOSE
-
+01. Sebelum melakukan download module mongoose, buat folder "utils" terlebih dahulu. Pada latihan sebelumnya folder ini berfungsi sebagai penyimpan file js yang berisi function-function untuk pengolahan data dan pengubah isi file contacts.json
+02. Didalam folder "utils" buat file "db.js", didalam file ini lah konfigurasi agarvterhubung dengan mongoose dilakukan.
+03. 
 
 
 
