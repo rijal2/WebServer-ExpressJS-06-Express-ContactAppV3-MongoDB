@@ -16,6 +16,15 @@ SKENARIONYA adalah mengopy file maupun folder yang dibutuhkan dari sesi latihan 
 01. Copy metode app.get() yang merespon halaman home.
 02. Copy folder beserta isinya, yang berkaitan dengan halaman home. Yaitu folder view dan public. Copy semuanya. Sampai disini tampilan dibrowser masih error, tinggal melakuka setup tampilan ejs.
 03. Setup tampilan ejs.
+04. Copy metode app.get() yang merespon halaman about.
+05. Copy metode app.get() yang merespon halaman contact. Jangan jalankan dulu metode ini karena didalamnya terdapat function yang tidak dikenali, yaitu function loadContact().
+const contacts = loadContact()
+
+Ket: Function tersebut adalah yang bertugas untuk menampilkan data-data yang disimpan didalam file JSON. Karena pada sesi ini akan menggunakna mongoDB sebagai penimpanan datanya maka function ini sudah tidak dibutuhkan lagi.
+
+MENGHUBUNGKAN APLIKASI DENGAN MONGODB MENGGUNAKAN MONGOOSE
+
+
 
 
 

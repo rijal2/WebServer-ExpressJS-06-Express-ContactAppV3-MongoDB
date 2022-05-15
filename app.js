@@ -41,6 +41,28 @@ app.get('/', (req, res) => {
     });
 })
 
+// Halaman About
+app.get('/about', (req, res) => {
+    // res.sendFile('./about.html', {root: __dirname})
+    res.render('about', {
+        title: "Halaman About",
+        layout: "layouts/main-layout"
+    })
+})
+
+//Halaman Contact
+app.get('/contact', (req, res) => {
+    // res.sendFile('./contact.html', {root: __dirname})
+    const contacts = loadContact()
+    
+    res.render('contact', {
+        title: "Halaman Contact",
+        layout: "layouts/main-layout",
+        contacts,
+        msg: req.flash('pesan')
+    })
+})
+
 app.listen(port, () => {
     console.log(`Mobile App Aplication | Listening at http://localhost:${port}`)
 })
