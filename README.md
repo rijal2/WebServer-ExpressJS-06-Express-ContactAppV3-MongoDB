@@ -29,6 +29,7 @@ MENGHUBUNGKAN APLIKASI DENGAN MONGODB MENGGUNAKAN MONGOOSE
     npm i mongoose@5.12.13
 04. Lakukan konfigurasi agar mongoos eterhubung dengan aplikasi.
 
+05. Buat Schema data di dalam file db.js, kemudian trial hingga berhasil.
 
 
 
