@@ -50,3 +50,11 @@ INSTALL FLASH MASSAGE
 02. Install module cookie-parser, "npm i cookie-parser@1.4.5"
 03. Install module connect-flash, "npm i connect-flash@0.1.1"
 04. Lakukan require dan konfigurasi seperti pada sesi latihan sebelumnya
+
+TAMPILKAN HALAMAN DETAIL
+01. Copy metode app.get() yang merespn halaman detail contact.
+02. ubah Function findContact(), menjadi Contact.findOne(), sebab aplikasi sudah terhubung dengan mongoDB bukan lagi dengan file JSON.
+03. Sesuaikan function tersebut menjadi async await, karena sebelumnya masih berupa promise.
+04. Masukkan filter nya, mau dicari berdasarkan nama, maka tulis:
+
+    Contact.findOne({nama: req.params.nama})
