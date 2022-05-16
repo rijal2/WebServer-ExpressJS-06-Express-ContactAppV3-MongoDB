@@ -4,6 +4,9 @@ const expressLayouts = require('express-ejs-layouts');
 const app = express()
 const port = 3000;
 
+require('./utils/db');
+const Contact = require('./model/contact')
+
 // SET UP EJS
 
 //Menggunakan ejs
@@ -51,9 +54,8 @@ app.get('/about', (req, res) => {
 })
 
 //Halaman Contact
-app.get('/contact', (req, res) => {
-    // res.sendFile('./contact.html', {root: __dirname})
-    const contacts = loadContact()
+app.get('/contact', async (req, res) => {
+    const contacts = await Contact.find()
     
     res.render('contact', {
         title: "Halaman Contact",

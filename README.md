@@ -30,6 +30,11 @@ MENGHUBUNGKAN APLIKASI DENGAN MONGODB MENGGUNAKAN MONGOOSE
 04. Lakukan konfigurasi agar mongoos eterhubung dengan aplikasi.
 
 05. Buat Schema data di dalam file db.js, kemudian trial hingga berhasil.
+06. Pisahkan schema yang telah dibuat ke dalam folder tersendiri, sebab bisa jadi akan ada banyak schema yang nanti dibutuhkan. Buat Folder Bernama "Model", di dalam nya buat file js yang akan berfungsi untuk mendfinisikan masing-masing schema.
 
-
-
+07. Export dan require ke dalam app.js
+08. Pada file app.js Require juga koneksi ke MongoDB nya yang ada di './utils/db.js'
+09. Copy metode app.get() yang merespon halaman contact yang ada di dalam file app.js di sesi latihan sebelumnya.
+10. Ubah function loadContact() yang sebelumnya mengelola data dari file JSON, menjadi function yang mengelola data di mongoDB, yaitu Contact.find().
+11. Funtion tersebut masih berbentuk promise, sehingga untuk menampilkan datanya perlu diubah menjadi bentuk async await. Jadi ubah dulu menjadi async await.
+12. 
