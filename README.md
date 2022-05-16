@@ -24,8 +24,10 @@ Ket: Function tersebut adalah yang bertugas untuk menampilkan data-data yang dis
 
 MENGHUBUNGKAN APLIKASI DENGAN MONGODB MENGGUNAKAN MONGOOSE
 01. Sebelum melakukan download module mongoose, buat folder "utils" terlebih dahulu. Pada latihan sebelumnya folder ini berfungsi sebagai penyimpan file js yang berisi function-function untuk pengolahan data dan pengubah isi file contacts.json
-02. Didalam folder "utils" buat file "db.js", didalam file ini lah konfigurasi agarvterhubung dengan mongoose dilakukan.
-03. 
+02. Didalam folder "utils" buat file "db.js", didalam file ini lah konfigurasi agar terhubung dengan mongoose dilakukan.
+03. Lakukan download module mongoose terlebih dahulu dengan menjalankan perintah berikut pada terminal
+    npm i mongoose@5.12.13
+04. Lakukan konfigurasi agar mongoos eterhubung dengan aplikasi.
 
 
 
