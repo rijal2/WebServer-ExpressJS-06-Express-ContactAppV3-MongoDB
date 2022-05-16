@@ -4,6 +4,10 @@ const expressLayouts = require('express-ejs-layouts');
 const app = express()
 const port = 3000;
 
+const session = require('express-session');
+const cookieParser = require('cookie-parser')
+const flash = require('connect-flash')
+
 require('./utils/db');
 const Contact = require('./model/contact')
 
@@ -16,6 +20,16 @@ app.use(expressLayouts);
 app.use(express.static('public'))
 //Menggunakan middleware express.urlencoded()
 app.use(express.urlencoded( {extended: true} ))
+
+//Konfigurasi Flash
+app.use(cookieParser('secret'));
+app.use(session({
+    cookie: { maxAge: 6000},
+    secret: 'secret',
+    resave: true,
+    saveUninitialized: true
+}));
+app.use(flash())
 
 // Halaman Home
 app.get('/', (req, res) => {

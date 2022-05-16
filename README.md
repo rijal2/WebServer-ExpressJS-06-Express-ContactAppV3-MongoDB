@@ -37,4 +37,16 @@ MENGHUBUNGKAN APLIKASI DENGAN MONGODB MENGGUNAKAN MONGOOSE
 09. Copy metode app.get() yang merespon halaman contact yang ada di dalam file app.js di sesi latihan sebelumnya.
 10. Ubah function loadContact() yang sebelumnya mengelola data dari file JSON, menjadi function yang mengelola data di mongoDB, yaitu Contact.find().
 11. Funtion tersebut masih berbentuk promise, sehingga untuk menampilkan datanya perlu diubah menjadi bentuk async await. Jadi ubah dulu menjadi async await.
-12. 
+
+    Ket:
+    Seharusnya semua sudah sesuai dan bisa di tampilkan, tapi karena ada beberapa detail yang perlu di instal maka muncul error seperti berikut
+
+    "TypeError: req.flash"
+
+    error tersebut berasal dari module flash massage yang diterapkan di view, tetapi belum diinstall di module kerja saat ini. Oleh karena itu install dan konfigurasi dulu semua kebutuhan terkait flash massage seperti pada sesi latihan sebelumnya.
+
+INSTALL FLASH MASSAGE
+01. Install module express-session, "npm i express-session@1.17.2"
+02. Install module cookie-parser, "npm i cookie-parser@1.4.5"
+03. Install module connect-flash, "npm i connect-flash@0.1.1"
+04. Lakukan require dan konfigurasi seperti pada sesi latihan sebelumnya
