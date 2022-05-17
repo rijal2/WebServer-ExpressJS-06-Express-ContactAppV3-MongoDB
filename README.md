@@ -58,3 +58,9 @@ TAMPILKAN HALAMAN DETAIL
 04. Masukkan filter nya, mau dicari berdasarkan nama, maka tulis:
 
     Contact.findOne({nama: req.params.nama})
+
+MENAMPILKAN HALAMAN FORM TAMBAH DATA
+01. Copy metode app.get() yang merespon halaman form tambah data
+02. Copy metode app.post() yang menangani proses tambah data
+03. Karena didalam metode app.post() terdapat validasi, maka install express-validator@6.12.0 dan require kedalam app.js .
+04. Ubah function cekDuplikat() menjadi Contact.findOne() . Ingat bentuk function tersebut masih berupa promise, agar bisa digunakan dan datanya tebaca maka tambahkan async-await.

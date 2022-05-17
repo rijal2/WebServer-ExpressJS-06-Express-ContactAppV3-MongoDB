@@ -8,6 +8,8 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser')
 const flash = require('connect-flash')
 
+const { body, validationResult, check } = require('express-validator');
+
 require('./utils/db');
 const Contact = require('./model/contact')
 
@@ -79,6 +81,14 @@ app.get('/contact', async (req, res) => {
     })
 })
 
+//Halaman Form Tambah data kontak
+app.get('/contact/add', (req, res) => {
+    res.render('add-contact', {
+        title: "Form Tambah Data Contact",
+        layout: "layouts/main-layout"
+    })
+})
+
 //Setting halaman Detail Contact
 app.get('/contact/:nama', async (req, res) => {
     const contact = await Contact.findOne({nama: req.params.nama})
@@ -89,6 +99,39 @@ app.get('/contact/:nama', async (req, res) => {
         contact,
     })
 })
+
+//Proses penyimpanan data
+app.post('/contact', [
+    body('nama').custom(async (value) => {
+        const duplikat = await Contact.findOne({nama: value})
+        if(duplikat){
+            throw new Error('Nama yang diinput sudah ada. Silahkan gunakan nama lain!')
+        }
+        return true
+    }),
+    check('email', 'Email yang diinput tidak valid!').isEmail(),
+    check('nohp', 'No HP yang diinput tidak valid!').isMobilePhone('id-ID')
+], (req, res) => {
+    const errors = validationResult(req);
+
+    //Lakukan pengecekan errors, apakah ada isinya atau tidak
+    if(!errors.isEmpty()){
+        // return res.status(400).json({ errors: errors.array() });
+        res.render('add-contact', {
+            title: "Form Tambah Data Contact",
+            layout: "layouts/main-layout",
+            errors: errors.array()
+        })
+    
+    } else{
+        Contact.insertMany(req.body, (error, Result) => {
+            req.flash('pesan', 'Data contact berhasil ditambahkan') // Setting flash massage
+            res.redirect('/contact') //Setelah data disimpan maka langsung tampil halaman '/contact'
+
+        });
+    }
+})
+
 
 app.listen(port, () => {
     console.log(`Mobile App Aplication | Listening at http://localhost:${port}`)
