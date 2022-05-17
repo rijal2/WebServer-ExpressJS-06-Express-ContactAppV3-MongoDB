@@ -64,3 +64,8 @@ MENAMPILKAN HALAMAN FORM TAMBAH DATA
 02. Copy metode app.post() yang menangani proses tambah data
 03. Karena didalam metode app.post() terdapat validasi, maka install express-validator@6.12.0 dan require kedalam app.js .
 04. Ubah function cekDuplikat() menjadi Contact.findOne() . Ingat bentuk function tersebut masih berupa promise, agar bisa digunakan dan datanya tebaca maka tambahkan async-await.
+
+MENGATUR PROSES DELETE CONTACT
+Pada sesi latihan ini sudah tidak akan menggunakan metode app.get() lagi dalam melakukan penghapusan data, tetapi menggunakan app.delete() . Sedangkan Didalam node js hanya dikenal dua metode yaitu app.get() dan app.post(), untuk mengatasi hal itu maka kita butuh modul npm yang bernama methode-override.
+
+01. Lakuakn instalasi modul npm i method-override@3.0.0

@@ -10,6 +10,8 @@ const flash = require('connect-flash')
 
 const { body, validationResult, check } = require('express-validator');
 
+const methodOverride = require('method-override')
+
 require('./utils/db');
 const Contact = require('./model/contact')
 
@@ -89,17 +91,6 @@ app.get('/contact/add', (req, res) => {
     })
 })
 
-//Setting halaman Detail Contact
-app.get('/contact/:nama', async (req, res) => {
-    const contact = await Contact.findOne({nama: req.params.nama})
-
-    res.render('detail', {
-        title: "Halaman Detail Contact",
-        layout: "layouts/main-layout",
-        contact,
-    })
-})
-
 //Proses penyimpanan data
 app.post('/contact', [
     body('nama').custom(async (value) => {
@@ -132,6 +123,16 @@ app.post('/contact', [
     }
 })
 
+//Setting halaman Detail Contact
+app.get('/contact/:nama', async (req, res) => {
+    const contact = await Contact.findOne({nama: req.params.nama})
+
+    res.render('detail', {
+        title: "Halaman Detail Contact",
+        layout: "layouts/main-layout",
+        contact,
+    })
+})
 
 app.listen(port, () => {
     console.log(`Mobile App Aplication | Listening at http://localhost:${port}`)
