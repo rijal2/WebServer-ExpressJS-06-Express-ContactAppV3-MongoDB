@@ -87,3 +87,36 @@ Pada sesi latihan ini sudah tidak akan menggunakan metode app.get() lagi dalam m
 12. Karena data yang akan dihapus memiliki key nama, maka masukkan "nama" kedalam paramter object nya. Value nya gunakan req.body.nama
 13. Seperti ini
     {nama: req.body.nama}
+
+MEMBUAT PROSES EDIT DATA, pada proses ini terdapat dua bagian
+- Menampilkan form edit data yang sudah terisi dengan data-data contact
+- Proses update data dan verifikasi
+
+Menampilkan form edit data
+01. Ambil metode app.get() yang mengirimkan respon halaman form edit data
+02. Ganti function findContact() menjadi method yang dimiliki mongoDB untuk melakukann pencarian, yaitu Contact.findOne()
+03. Masukkan parameter object yang berisi nama. Karena data url yang dikirim adalah nama
+04. Seperti ini
+    Contact.findOne({ nama: req.params.nama })
+
+    Jangan lupa gunakan async-await.
+05. Apabila method tersebut berhasil dijalankan maka form edit data akan berisi data sesuai object data yang akan diubah.
+06. Pada halaman edit-contact.ejs, ubah action yang ada di form dari action="/contact/update" menjadi action="/contact?_method=PUT" . Sebab kita akan menggunaan method app.put() untuk mengubah data.
+07. Tambahkan juga tag <input> yang type nya hidden dan mengurimkan id data, sehingga nanti bisa melakukan edit data berdasarkan id yang dikirim.
+
+Update perubahan data
+01. Buat rout yang menangani perubahan data. Bisa copy dari sesi latihan sebelumnya, yaitu app.post(). Namun akan ada beberapa baris yang perlu diubah, sebab kita akan langsung menggunakan method app.put()
+02. Ubah metode nya app.post() menjadi app.put()
+03. Ubah request url nya yang sebelumnya '/contact/update' menjadi '/contact?_method=PUT'
+04. Ubah function cekDuplikat(value) menjadi Contact.findOne({ nama: value })
+05. Jangan lupa gunakan async-await
+06. Ubah juga function updateContact(req.body); menjadi Contact.updateOne()
+07. Isi method tersebut dengan 2 buah parameter object.
+08. Parameter Object pertama berupa key. Yaitu key apa yang akan digunakan untuk mengubah data. Kita akan mengubah data berdasarkan _id yang dikrirm. Pada langkah diatas saat tombol edit ditekan sistem juga mengirimkan _id data, sehingga id tersebut bisa dimanfaatkan.
+09. Isi valeunya dengan mengambil dari req.body._id
+10. Sehigga parameternya menjadi seperti
+    {
+        _id: req.body._id
+    }
+11. Parameter Object kedua adalah seting data apa saja yang akan diubah.
+12. Agar hasilnya dapat keluar dan bisa dilihat, sehingga bisa ditampilkan pada flash message, maka chaining saja method di atas dengan then().
