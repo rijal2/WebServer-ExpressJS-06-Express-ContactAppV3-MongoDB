@@ -66,6 +66,24 @@ MENAMPILKAN HALAMAN FORM TAMBAH DATA
 04. Ubah function cekDuplikat() menjadi Contact.findOne() . Ingat bentuk function tersebut masih berupa promise, agar bisa digunakan dan datanya tebaca maka tambahkan async-await.
 
 MENGATUR PROSES DELETE CONTACT
-Pada sesi latihan ini sudah tidak akan menggunakan metode app.get() lagi dalam melakukan penghapusan data, tetapi menggunakan app.delete() . Sedangkan Didalam node js hanya dikenal dua metode yaitu app.get() dan app.post(), untuk mengatasi hal itu maka kita butuh modul npm yang bernama methode-override.
+Pada sesi latihan ini sudah tidak akan menggunakan metode app.get() lagi dalam melakukan penghapusan data, tetapi menggunakan app.delete() . Sedangkan Didalam browser reques methode hanya ada dua metode yang dikenal yaitu app.get() dan app.post(), padahal metode itu ada banyak tidak hanya dua. Nah, untuk mengatasi hal itu maka kita butuh modul npm yang bernama methode-override.
 
 01. Lakuakn instalasi modul npm i method-override@3.0.0
+02. Lakukan require dan setup agar bisa digunakan
+03. Agar penggunaan method app.delete() bisa berjalan dengan maksimal maka tombol "hapus" di dalam file detail.ejs yang sebelumnya terbuat dari tag <a> yang diberi class btn , diubah terlebih dahulu menjadi tag <button> yang terbungkus didalam tag <form>. Hal ini sesuai dengan petunjuk yang ada di documentasi npmjs
+    https://www.npmjs.com/package/method-override
+
+04. Apabila ini dijalankan maka akan muncul tombol button hapus, yang tombol tersebut sudah terbentuk dari tag <button>. Namun posisinya turun dan tidak sejajar (inline) lagi dengan tombol edit. Ini karena default display dari form adalah block. Untuk mengubah agar sejajar, maka tambahkan class pada tag <form> yang isinya "d-inline".
+05. Tambahkan onclick pada tag <button> yang akan mengembalikan pop box konfirmasi penghapusan data.
+06. Agar lebih prefer maka pada saat tombol hapus ditekan sistem juga mengirimkan data nama. Oleh karena itu tambahkan tag <input> yang typenya hidden, yang berada didalam tag <form>. Sertkan juga atribut name yang bernilai nama, dan atribut value yang nilainya diambil dari contact.nama,
+
+07. Buat metode app.delete() yang url requestnya adalah '/contact'
+08. Seperti berikut ini
+    app.delete('/contact', (req, res) => {})
+
+09. Buat proses hapus data menggunakan metode yang dimiliki oleh mongoDB, yaitu Contact.deleteOne(),
+10. Masukkan metode tersebut kedalam parameter callback function.
+11. Di dalam metode tersebut kirim data object yang berisi key yang akan dihapus
+12. Karena data yang akan dihapus memiliki key nama, maka masukkan "nama" kedalam paramter object nya. Value nya gunakan req.body.nama
+13. Seperti ini
+    {nama: req.body.nama}

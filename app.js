@@ -25,6 +25,9 @@ app.use(express.static('public'))
 //Menggunakan middleware express.urlencoded()
 app.use(express.urlencoded( {extended: true} ))
 
+// SETUP method-override
+app.use(methodOverride('_method'))
+
 //Konfigurasi Flash
 app.use(cookieParser('secret'));
 app.use(session({
@@ -121,6 +124,17 @@ app.post('/contact', [
 
         });
     }
+})
+
+// Proses Hapus Data
+app.delete('/contact', (req, res) => {
+    Contact.deleteOne({nama: req.body.nama}).then((Result) => {
+        //Kasih Notifikasi bahwa data berhasil dihapus. Bisa menggunakan flash message yang sudah pernah dibuat
+        req.flash('pesan', 'Data contact berhasil dihapus')
+
+        // Kemudian kembalikan kehalaman contact.ejs
+        res.redirect('/contact') //Setelah data disimpan maka langsung tampil halaman '/contact'
+    })
 })
 
 //Setting halaman Detail Contact
